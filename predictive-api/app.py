@@ -22,6 +22,6 @@ def predict(request: PredictionRequest):
     try:
         input_array = np.array([[request.input_value]])
         prediction = model.predict(input_array)
-        return {"input": request.input_value, "prediction": prediction[0]}
+        return {"input": request.input_value, "prediction": int(prediction[0])}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
